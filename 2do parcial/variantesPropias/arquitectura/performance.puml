@@ -1,0 +1,16 @@
+@startuml arqui
+left to right direction
+!theme cerulean-outline
+
+actor usuarie
+database cache
+node servidor
+database bdd
+cloud internet
+
+usuarie --> internet
+internet "http"--> servidor
+servidor --> cache
+servidor --> bdd
+
+@enduml

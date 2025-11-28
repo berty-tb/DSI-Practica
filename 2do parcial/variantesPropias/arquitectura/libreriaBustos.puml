@@ -1,0 +1,19 @@
+@startuml arqui
+!theme cerulean-outline
+left to right direction
+
+actor usuarie
+node servicioVentas
+queue colaMensajes
+database bdEstadisticas
+node servicioEstadisticas
+cloud internet
+
+usuarie --> internet
+internet --> servicioVentas
+servicioVentas --> colaMensajes
+servicioVentas <.. colaMensajes
+colaMensajes <-- servicioEstadisticas
+colaMensajes ..> servicioEstadisticas
+servicioEstadisticas --> bdEstadisticas
+@enduml

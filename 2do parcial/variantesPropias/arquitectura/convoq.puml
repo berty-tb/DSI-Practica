@@ -1,0 +1,52 @@
+@startuml arqu
+!theme cerulean-outline
+skinparam componentStyle uml2
+left to right direction
+
+actor "Cliente Global" as Cliente
+
+node "Nube / Internet" {
+    component "CDN" as CDN
+}
+
+node "Infraestructura Convoq" {
+    node "Balanceador de Carga" as LB
+    
+    node "Cluster Web" {
+        component "ConvoqServer 1" as Srv1
+        component "ConvoqServer 2" as Srv2
+        component "ConvoqServer N" as SrvN
+    }
+
+    database "Base de Datos" as DB
+    
+    queue "Cola de Auditoría" as Queue
+    
+    node "Worker Node" {
+        component "Audit Worker" as Worker
+    }
+}
+
+node "Sistema Externo" {
+    component "API Auditoría" as AuditSystem
+}
+
+' Relaciones
+Cliente --> CDN : "1. Pide estáticos (img/css)"
+Cliente --> LB : "2. Pide datos (API)"
+
+LB --> Srv1
+LB --> Srv2
+LB --> SrvN
+
+Srv1 --> DB
+Srv2 --> DB
+SrvN --> DB
+
+' Solución Asincrónica
+Srv1 ..> Queue : "Push evento"
+Srv2 ..> Queue
+Worker ..> Queue : "Pop evento"
+Worker --> AuditSystem : "POST /audit (lento)"
+
+@enduml

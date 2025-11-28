@@ -1,0 +1,44 @@
+@startuml arqui
+left to right direction
+!theme cerulean-outline
+
+actor usuarie
+
+node orquestador
+node seguimientoDeIncidentes
+node facturacion
+node revisionDeCodigo
+node controlDeVersiones
+node administracionDeEquipos
+node planificacionAgil
+node seguimientoDeVentas
+
+database dbSeguimientoDeIncidentes
+database dbFacturacion
+database dbRevisionDeCodigo
+database dbControlDeVersiones
+database dbAdministracionDeEquipos
+database dbPlanificacionAgil
+database dbSeguimientoDeVentas
+
+usuarie --> orquestador
+
+orquestador --> revisionDeCodigo
+orquestador --> controlDeVersiones
+
+orquestador --> seguimientoDeIncidentes
+orquestador --> administracionDeEquipos
+orquestador --> planificacionAgil
+
+orquestador --> facturacion
+orquestador --> seguimientoDeVentas
+
+seguimientoDeIncidentes --> dbSeguimientoDeIncidentes
+facturacion --> dbFacturacion
+revisionDeCodigo --> dbRevisionDeCodigo
+controlDeVersiones --> dbControlDeVersiones
+administracionDeEquipos --> dbAdministracionDeEquipos
+planificacionAgil --> dbPlanificacionAgil
+seguimientoDeVentas --> dbSeguimientoDeVentas
+
+@enduml

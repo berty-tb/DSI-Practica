@@ -1,0 +1,13 @@
+@startuml arqui
+left to right direction
+!theme cerulean-outline
+
+node IDE
+node ServidorMarketPlace{
+    component app
+    database baseDeDatos
+}
+IDE "https"--> app
+app --> baseDeDatos
+
+@enduml

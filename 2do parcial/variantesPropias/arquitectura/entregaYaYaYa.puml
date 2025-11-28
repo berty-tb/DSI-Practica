@@ -1,0 +1,18 @@
+@startuml arqui
+!theme cerulean-outline
+left to right direction
+
+actor usuarie
+actor operador
+cloud internet
+node servidorEntregaYAYAYA{
+    component App
+    database BaseDeDatos
+}
+
+operador "http" --> internet
+usuarie "http"--> internet
+internet --> App
+App --> BaseDeDatos
+
+@enduml

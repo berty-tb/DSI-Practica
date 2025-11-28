@@ -1,0 +1,24 @@
+@startuml arqui
+left to right direction
+!theme cerulean-outline
+
+actor browser
+
+rectangle redInterna{
+    node Servidor1
+    node Servidor2
+    node Servidor3
+    database baseDeDatos
+}
+
+node loadBalancer
+
+browser --> loadBalancer
+loadBalancer "http"--> Servidor1
+loadBalancer "http"--> Servidor2
+loadBalancer "http"--> Servidor3
+Servidor1 --> baseDeDatos 
+Servidor2 --> baseDeDatos 
+Servidor3 --> baseDeDatos
+
+@enduml
