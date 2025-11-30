@@ -1,0 +1,26 @@
+﻿Parcial 1 - LivreStream - Primera parte
+
+
+Estamos iniciando un nuevo proyecto: LivreStream, un sistema de software libre de transmisión de videos en vivo (streaming) . Éste estará inspirado en la conocida plataforma Twitch, pero buscará resolver varios de sus problemas y otorgar más herramientas de control tanto a quienes transmiten videos (streamers) como a quienes participan de un stream.
+Contexto 
+Entre otras cosas, LivreStream implementará mejoras en los sistemas de moderación, consentimiento y filtrado de contenido[1], incluirá categorías personalizables y la opción de monetización a través de mecenazgo y modificará los mecanismos de seguimiento y recomendaciones. Sin embargo, en esta primera instancia nos enfocaremos sólo en sus funciones más básicas que se describen a continuación. 
+Canales y transmisiones
+Dentro de LivreStream, cada persona registrada en la plataforma administrará su propio canal, desde el cual podrá iniciar transmisiones en vivo (streams), indicando un título. Esto podrá ser hecho en cualquier momento, pero sólo puede haber una en curso por canal. Luego de finalizar, cualquier persona internauta las podrá encontrar en el listado histórico de las transmisiones pasadas de un canal, donde se mostrará para cada una el número máximo de participantes que tuvo, su título, fecha y hora de inicio y fin.
+Participantes y chats
+Una vez iniciada una transmisión, otras personas registradas podrán unirse como participantes, y podrán asistir al video en vivo e interactuar en el chat de la transmisión, enviando mensajes de texto. En LivreStream no habrá nunca mensajes privados entre participantes. 
+Suscripciones y muestras de apoyo
+Las personas registradas pueden también suscribirse a los canales que le sean de su preferencia. Además, todas las personas registradas podrán dar muestras de apoyo anónimas (un valor simbólico de 1 a 10) a uno o más canales (aún si no están suscritas).
+Categorias
+Para facilitar la búsqueda, al iniciar una transmisión, la persona administradora del canal podrá asignarle una o más categorías. Las categorías son textos libres pero breves, para maximizar la probabilidad de que se repitan entre transmisiones.
+Requerimientos
+Para esta primera parte, se desea soportar los siguientes requerimientos:
+
+
+1. Como persona internauta, deseo poder registrarme y crear mi canal en LivreStream.
+2. Como persona administradora de un canal, deseo poder iniciar y terminar una transmisión.
+3. Como persona internauta, deseo poder listar canales, las transmisiones en curso y las transmisiones históricas de un canal. 
+4. Como persona registrada, deseo poder suscribirme a canales y dar muestras de apoyo anónimas.
+5. Como persona registrada, deseo poder unirme a una transmisión en curso.
+6. Como persona participante, deseo enviar mensajes y ver los mensajes enviados hasta el momento en el chat de la transmisión. 
+________________
+[1] Podés consultar un análisis más profundo sobre éstas cuestiones acá.
