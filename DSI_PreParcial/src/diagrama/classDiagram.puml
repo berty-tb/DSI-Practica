@@ -1,0 +1,73 @@
+@startuml
+
+class Canal{
+-propietario : Usuario
+-transmisionesHistoricas : LIst<Transmision>
+-TransmisionActual : Transmision
+-muestrasDeApoyo : List<Integer>
+-suscriptores : List<Usuario>
+-repoCanales : RepoCanales
+
++listarTransmisionesHistoricas() : List<Transmision>
++transmitir(String titulo, List<String> categorias)
++finalizarTransmisionEnCurso()
++recibirMuestraDeApoyo(Integer cantidad)
++suscribirse(Usuario usuario)
+}
+
+class Transmision{
+-maxViewers : Integer
+-viewersActuales : Integer
+-viewers : List<Usuario>
+-titulo : String
+-inicio : LocalDateTime
+-fin : LocalDateTime
+-chat : List<Mensaje>
+-categorias : List<String>
+
++finalizar()
++serVistaPor(Usuario usuario)
++dejarDeVer(Usuario usuario)
++chatear(Mensaje mensaje)
++verChat() : List<Mensaje>
+}
+
+class Usuario{
+-userName : String
+-suscripciones : List<Canales>
+
++suscribirseA(Canal unCanal)
+}
+
+class Mensaje{
+-autor : Usuario
+-contenido : String
+}
+
+class RepoCanales{
+-instance : RepoCanales
+-canales : List<Canal>
+
++agregarCanal(Canal canal)
++listarCanales() : List<Canal>
++listarTransmisionesEnCurso() : List<Transmision>
+}
+
+Usuario-->Canal : "canal"
+Usuario-->"*"Canal : "suscripciones"
+
+Canal-->Usuario : "propietario"
+Canal-->"*"Usuario : "suscriptores"
+Canal-->Transmision : "actual"
+Canal-->"*"Transmision : "historicas"
+Canal-->RepoCanales
+
+RepoCanales-->"*"Canal
+RepoCanales..>"*"Transmision
+
+Transmision-->"*"Usuario
+Transmision-->"*"Mensaje
+
+Mensaje-->Usuario
+
+@enduml
